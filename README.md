@@ -18,6 +18,7 @@
 Name       : Suraj Maurya
 Role       : IoT & Embedded Software Developer
 Location   : India 🇮🇳
+Email      : surajmaurya.dev@gmail.com
 Focus      : Firmware ·SDKs · Industrial Protocols · Real-Time Systems
 Status     : Building at Anedya IoT
 ```
