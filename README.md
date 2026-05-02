@@ -15,9 +15,9 @@
 ## `> whoami`
 
 ```yaml
-Name        : Suraj Maurya
-Role        : Embedded Software Developer
-Location    : Uttar Pradesh, India 🇮🇳
-Focus       : IoT · Firmware · Real-Time Systems
-Stack       : ESP-IDF, nRF5340, Raspberry Pi
-Currently   : Deep-diving WebRTC & Bluetooth Mesh
+Name       : Suraj Maurya
+Role       : IoT & Embedded Software Engineer
+Location   : Uttar Pradesh, India 🇮🇳
+Focus      : Firmware ·SDKs · Industrial Protocols · Real-Time Systems
+Status     : Building at Anedya IoT
+```
