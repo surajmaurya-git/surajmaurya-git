@@ -1,9 +1,15 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=venom&color=timeAuto&height=200&section=header&text=Suraj%20Maurya&fontSize=60&fontAlign=50&fontAlignY=55&desc=Embedded%20Firmware%20Engineer%20%7C%20IoT%20Systems&descAlign=50&descAlignY=75&descSize=16&animation=twinkling)
+```
+███████╗██╗   ██╗██████╗  █████╗      ██╗
+██╔════╝██║   ██║██╔══██╗██╔══██╗     ██║
+███████╗██║   ██║██████╔╝███████║     ██║
+╚════██║██║   ██║██╔══██╗██╔══██║██   ██║
+███████║╚██████╔╝██║  ██║██║  ██║╚█████╔╝
+╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚════╝
+```
 
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&multiline=true&width=600&height=70&lines=Embedded+Firmware+Engineer+%F0%9F%9B%A0%EF%B8%8F;IoT+Systems+Architect+%F0%9F%8C%90;ESP-IDF+%7C+FreeRTOS+%7C+MQTT+%E2%9A%A1" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&multiline=true&width=600&height=80&lines=Embedded+Firmware+Engineer+%F0%9F%9B%A0%EF%B8%8F;IoT+Systems+Architect+%F0%9F%8C%90;ESP-IDF+%7C+RTOS+%7C+Bare-metal+Dev+%E2%9A%A1" alt="Typing SVG" />
 
 <br/>
 
@@ -163,6 +169,6 @@ Contributions include:
  and never needs to be debugged at 2 AM." — Every embedded engineer, ever.
 ```
 
-![footer](https://capsule-render.vercel.app/api?type=venom&color=timeAuto&height=120&section=footer)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D9FF,100:0066CC&height=100&section=footer&text=&fontSize=0" />
 
 </div>
