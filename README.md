@@ -17,7 +17,7 @@
 ```yaml
 Name       : Suraj Maurya
 Role       : IoT & Embedded Software Developer
-Location   : Uttar Pradesh, India 🇮🇳
+Location   : India 🇮🇳
 Focus      : Firmware ·SDKs · Industrial Protocols · Real-Time Systems
 Status     : Building at Anedya IoT
 ```
