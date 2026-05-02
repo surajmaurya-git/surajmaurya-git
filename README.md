@@ -5,6 +5,7 @@
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&multiline=true&width=600&height=70&lines=Embedded+Firmware+Engineer+%F0%9F%9B%A0%EF%B8%8F;IoT+Systems+Architect+%F0%9F%8C%90;ESP-IDF+%7C+FreeRTOS+%7C+MQTT+%E2%9A%A1" alt="Typing SVG" />
 
 <br/>
+<br/>
 
 [![Visits](https://visitcount.itsvg.in/api?id=suraj-maurya&icon=5&color=6)](https://visitcount.itsvg.in)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=flat&logo=linkedin)](https://linkedin.com/in/-surajmaurya-)
