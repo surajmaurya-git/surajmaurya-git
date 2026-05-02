@@ -6,9 +6,7 @@
 
 <br/>
 
-[![Visits](https://visitcount.itsvg.in/api?id=suraj-maurya&icon=5&color=6)](https://visitcount.itsvg.in)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=flat&logo=linkedin)](https://linkedin.com/in/-surajmaurya-)
-[![GitHub followers](https://img.shields.io/github/followers/surajmaurya-git?label=Follow&style=flat&logo=github)](https://github.com/surajmaurya-git)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-%230077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/surajmaurya-in/)
 
 </div>
 
