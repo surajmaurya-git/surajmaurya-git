@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suraj Maurya — Embedded Firmware Engineer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1117;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Courier New', monospace;
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #00d9ff88;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .name {
+    font-size: clamp(26px, 5vw, 46px);
+    font-weight: 700;
+    color: #e6f1fb;
+    letter-spacing: 0.06em;
+    text-align: center;
+    line-height: 1.1;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .name span {
+    color: #00d9ff;
+  }
+
+  .role {
+    font-size: clamp(11px, 2vw, 14px);
+    color: #60b4e0aa;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 18px;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .chip {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #00d9ffcc;
+    border: 1px solid #00d9ff44;
+    border-radius: 20px;
+    padding: 3px 11px;
+    background: #00d9ff0d;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00d9ff66, transparent);
+    margin: 14px auto 0;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+
+  .corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    opacity: 0.4;
+  }
+  .tl { top: 16px; left: 16px; border-top: 1.5px solid #00d9ff; border-left: 1.5px solid #00d9ff; }
+  .tr { top: 16px; right: 16px; border-top: 1.5px solid #00d9ff; border-right: 1.5px solid #00d9ff; }
+  .bl { bottom: 16px; left: 16px; border-bottom: 1.5px solid #00d9ff; border-left: 1.5px solid #00d9ff; }
+  .br { bottom: 16px; right: 16px; border-bottom: 1.5px solid #00d9ff; border-right: 1.5px solid #00d9ff; }
+
+  .scanline {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0,217,255,0.012) 3px,
+      rgba(0,217,255,0.012) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div class="scanline"></div>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div class="overlay">
+  <div class="tag">⬡ firmware · iot · embedded systems</div>
+  <div class="name">Suraj <span>Maurya</span></div>
+  <div class="role">Embedded Firmware Engineer</div>
+  <div class="divider"></div>
+  <div class="chips">
+    <span class="chip">ESP-IDF</span>
+    <span class="chip">FreeRTOS</span>
+    <span class="chip">MQTT</span>
+    <span class="chip">ESP32</span>
+    <span class="chip">C / C++</span>
+    <span class="chip">AWS IoT</span>
+    <span class="chip">Grafana</span>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); init(); });
+
+const NODE_COUNT = 70;
+const MAX_DIST   = 160;
+const SPEED      = 0.45;
+
+let nodes = [];
+
+function init() {
+  nodes = Array.from({ length: NODE_COUNT }, () => ({
+    x:     Math.random() * W,
+    y:     Math.random() * H,
+    vx:    (Math.random() - 0.5) * SPEED,
+    vy:    (Math.random() - 0.5) * SPEED,
+    r:     Math.random() * 2.2 + 1.8,
+    pulse: Math.random() * Math.PI * 2,
+    tier:  Math.random()
+  }));
+}
+init();
+
+let mouse = { x: -999, y: -999 };
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
+/* accent colours */
+const C_NODE   = [0,  190, 255];
+const C_HOVER  = [0,  255, 180];
+const C_LINE   = [0,  160, 220];
+const C_MLINE  = [0,  255, 180];
+const C_HUB    = [120,200,255];
+
+function rgba(rgb, a) {
+  return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+}
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  /* background */
+  ctx.fillStyle = '#0d1117';
+  ctx.fillRect(0, 0, W, H);
+
+  /* subtle radial glow at centre */
+  const grd = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W * 0.55);
+  grd.addColorStop(0,   'rgba(0,130,180,0.09)');
+  grd.addColorStop(0.6, 'rgba(0, 60,120,0.04)');
+  grd.addColorStop(1,   'transparent');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  /* move nodes */
+  for (const n of nodes) {
+    n.x  += n.vx;
+    n.y  += n.vy;
+    if (n.x < 0 || n.x > W) { n.vx *= -1; n.x = Math.max(0, Math.min(W, n.x)); }
+    if (n.y < 0 || n.y > H) { n.vy *= -1; n.y = Math.max(0, Math.min(H, n.y)); }
+    n.pulse += 0.018;
+  }
+
+  /* draw edges */
+  for (let i = 0; i < NODE_COUNT; i++) {
+    for (let j = i + 1; j < NODE_COUNT; j++) {
+      const a = nodes[i], b = nodes[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist >= MAX_DIST) continue;
+
+      const t = 1 - dist / MAX_DIST;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = rgba(C_LINE, t * t * 0.55);
+      ctx.lineWidth   = t * 1.1;
+      ctx.stroke();
+    }
+  }
+
+  /* mouse edges */
+  for (const n of nodes) {
+    const dx = mouse.x - n.x, dy = mouse.y - n.y;
+    const d  = Math.sqrt(dx*dx + dy*dy);
+    if (d > 220) continue;
+    const t = 1 - d / 220;
+    ctx.beginPath();
+    ctx.moveTo(n.x, n.y);
+    ctx.lineTo(mouse.x, mouse.y);
+    ctx.strokeStyle = rgba(C_MLINE, t * t * 0.7);
+    ctx.lineWidth   = t * 1.4;
+    ctx.stroke();
+  }
+
+  /* draw nodes */
+  for (const n of nodes) {
+    const pSin = 0.5 + 0.5 * Math.sin(n.pulse);
+    const dx   = mouse.x - n.x, dy = mouse.y - n.y;
+    const md   = Math.sqrt(dx*dx + dy*dy);
+    const near = md < 130;
+    const col  = near ? C_HOVER : (n.tier > 0.85 ? C_HUB : C_NODE);
+
+    const rBase  = near ? n.r + 2.5 : n.r;
+    const rOuter = rBase + 5 + pSin * 4;
+
+    /* glow ring */
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, rOuter, 0, Math.PI * 2);
+    ctx.fillStyle = rgba(col, 0.05 + pSin * 0.07);
+    ctx.fill();
+
+    /* node core */
+    const grad = ctx.createRadialGradient(n.x - rBase*0.3, n.y - rBase*0.3, 0, n.x, n.y, rBase);
+    const alpha = near ? 1 : (0.55 + pSin * 0.35);
+    grad.addColorStop(0, rgba([200, 240, 255], alpha));
+    grad.addColorStop(1, rgba(col, alpha * 0.7));
+
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, rBase, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
+  /* mouse cursor dot */
+  if (mouse.x > 0) {
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = rgba(C_HOVER, 0.95);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 14, 0, Math.PI * 2);
+    ctx.strokeStyle = rgba(C_HOVER, 0.35);
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
